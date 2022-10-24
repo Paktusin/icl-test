@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { from, of } from 'rxjs';
-import { switchMap, tap, map, catchError } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 import { User } from './interfaces/user';
-import {
-  Authentication,
-  GoogleAuth,
-} from '@codetrix-studio/capacitor-google-auth';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { environment } from './environments/environment';
 import { Preferences } from '@capacitor/preferences';
 
