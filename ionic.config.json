@@ -1,0 +1,8 @@
+{
+  "name": "icl-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "40d6ff44"
+}

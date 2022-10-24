@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "icl-test",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
