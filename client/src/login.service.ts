@@ -1,58 +1,81 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { from, of } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
-import { User } from './interfaces/user';
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
-import { environment } from './environments/environment';
+import { tap, map, switchMap } from 'rxjs/operators';
+import { User } from './app/interfaces/user';
+import {
+  GoogleAuth,
+  User as GoogleUser,
+} from '@codetrix-studio/capacitor-google-auth';
 import { Preferences } from '@capacitor/preferences';
+import { HttpClient } from '@angular/common/http';
 
-const STORAGE_KEY = 'user';
+const STORAGE_KEY = 'token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService implements CanActivate {
   user?: User;
+  token?: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
     GoogleAuth.initialize({
-      clientId: environment.webkey,
+      clientId:
+        '564169523192-ral083ni5ft6rfmahepe4oenn5990hsa.apps.googleusercontent.com',
       scopes: ['profile', 'email'],
     });
   }
 
-  setUser(user: User) {
-    Preferences.set({ key: STORAGE_KEY, value: JSON.stringify(user) });
-    this.user = user;
+  setToken(token: string) {
+    return from(Preferences.set({ key: STORAGE_KEY, value: token })).pipe(
+      tap(() => {
+        this.token = token;
+      })
+    );
+  }
+
+  getToken() {
+    if (this.token) {
+      return of(this.token);
+    }
+    return from(Preferences.get({ key: STORAGE_KEY })).pipe(
+      map((tokenStorage) => tokenStorage.value)
+    );
   }
 
   canActivate() {
-    if (this.user) {
-      return of(true);
-    } else {
-      return from(Preferences.get({ key: STORAGE_KEY })).pipe(
-        map((strValue) => JSON.parse(strValue.value)),
-        catchError((err) => {
-          console.error(err);
-          return of(null);
-        }),
-        tap((user) => {
-          if (user) {
-            this.setUser(user);
-          } else {
-            this.router.navigate(['/']);
-          }
-        })
-      );
-    }
+    return this.getToken().pipe(
+      switchMap((token) => {
+        if (this.user) {
+          return of(this.user);
+        } else {
+          return this.http.get<User>('/private/user');
+        }
+      }),
+      tap((user) => {
+        this.user = user;
+      }),
+      map((user) => !!user)
+    );
   }
 
-  login() {
+  googleSignIn() {
     return from(GoogleAuth.signIn()).pipe(
+      switchMap((user) => {
+        console.log(user);
+        return this.attemplGoogleAndLogin(user);
+      }),
       tap((user) => {
-        this.setUser(user);
+        this.user = user;
+        this.setToken(user.token);
       })
     );
+  }
+
+  attemplGoogleAndLogin(user: GoogleUser) {
+    return this.http.post<User>(`/login/google`, {
+      token: user.authentication.idToken,
+    });
   }
 }

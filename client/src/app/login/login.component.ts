@@ -13,7 +13,7 @@ export class LoginComponent extends BaseComponent {
 
   loginWithGoogle() {
     this.addSub(
-      this.loginService.login().subscribe(() => {
+      this.loginService.googleSignIn().subscribe(() => {
         this.router.navigateByUrl('/');
       })
     );
