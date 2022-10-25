@@ -25,10 +25,8 @@ export class SessionInterceptor implements HttpInterceptor {
       switchMap((token) => {
         const newRequestToApi = req.clone({
           url: environment.apiUrl + req.url,
+          headers: req.headers.set('Authorization', `Bearer ${token}`)
         });
-        if (token) {
-          newRequestToApi.headers.append('Authorization', `Bearer ${token}`);
-        }
         return next.handle(newRequestToApi).pipe(
           tap({
             next: (resp) => {},

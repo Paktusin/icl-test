@@ -67,8 +67,8 @@ export class LoginService implements CanActivate {
         return this.attemplGoogleAndLogin(user);
       }),
       tap((user) => {
-        this.user = user;
         this.setToken(user.token);
+        this.user = user;
       })
     );
   }
