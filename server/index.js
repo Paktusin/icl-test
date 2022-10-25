@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.use(require("./middleware/cors"));
 app.use("/private", require("./routes/private"));
-app.use("/login", require("./routes/login"));
+app.use(require("./routes/login"));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

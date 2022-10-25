@@ -1,0 +1,6 @@
+<ion-chip [routerLink]="link && ['/profile', user.id]">
+  <ion-avatar>
+    <img referrerpolicy="no-referrer" [alt]="user.name" [src]="user.picture" />
+  </ion-avatar>
+  <ion-label>{{ prefix }}{{ user.name }}</ion-label>
+</ion-chip>

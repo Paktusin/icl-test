@@ -9,10 +9,14 @@ export class PostsService {
   readonly postUrl = '/private/post';
   constructor(private http: HttpClient) {}
 
-  list(page = 0, pageSize = 10) {
-    return this.http.get<Post[]>(
-      this.postUrl + `?skip=${page * pageSize}&limit=${pageSize}`
-    );
+  list(page = 0, pageSize = 10, userId?: string) {
+    const params = new URLSearchParams();
+    params.set('skip', (page * pageSize).toString());
+    params.set('limit', pageSize.toString());
+    if (userId) {
+      params.set('userId', userId);
+    }
+    return this.http.get<Post[]>(this.postUrl + `?${params}`);
   }
 
   create(post: Post) {
@@ -21,7 +25,7 @@ export class PostsService {
 
   delete(post: Post) {
     // eslint-disable-next-line no-underscore-dangle
-    return this.http.delete(this.postUrl + post._id);
+    return this.http.delete(`${this.postUrl}/${post._id}`);
   }
 
   get(id: string) {

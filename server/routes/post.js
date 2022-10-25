@@ -2,16 +2,14 @@ const express = require("express");
 const router = express.Router();
 const { Post } = require("../schemas/Post");
 
-
 router.get("/:id", async (req, res) => {
   const post = await Post.findById(req.params.id);
   return res.json(post.toObject());
 });
 
-
 router.get("/", async (req, res) => {
-  const { limit = 10, skip = 0 } = req.query;
-  const posts = await Post.find()
+  const { limit = 10, skip = 0, userId } = req.query;
+  const posts = await Post.find({ "from.id": userId ?? /.*/ })
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit);

@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { IonInfiniteScroll } from '@ionic/angular';
 import { Post as Post } from 'src/app/interfaces/Post';
 import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.servie';
 import { BaseComponent } from '../base.component';
 
 @Component({
+  selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent extends BaseComponent implements OnInit {
+  @Input() userId?: string;
+
+  @ViewChild(IonInfiniteScroll) infinityScroll: IonInfiniteScroll;
+
   text = '';
   page = 0;
   posts: Post[] = [];
@@ -30,7 +36,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
     });
   }
 
-  get user() {
+  get currentUser() {
     return this.loginService.user;
   }
 
@@ -39,16 +45,17 @@ export class PostsComponent extends BaseComponent implements OnInit {
   }
 
   loadMore(page = this.page + 1) {
-    this.loading = true;
     this.addSub(
-      this.postsService.list(page).subscribe((messages) => {
-        this.page = page;
+      this.postsService.list(page, 10, this.userId).subscribe((messages) => {
+        if (messages.length) {
+          this.page = page;
+        }
         if (page === 0) {
           this.posts = messages;
         } else {
           this.posts = this.posts.concat(messages);
         }
-        this.loading = false;
+        this.infinityScroll.complete();
       })
     );
   }
@@ -56,6 +63,8 @@ export class PostsComponent extends BaseComponent implements OnInit {
   delete() {
     this.addSub(
       this.postsService.delete(this.posts[this.delIndex]).subscribe(() => {
+        this.posts.splice(this.delIndex, 1);
+        this.delIndex = undefined;
       })
     );
   }

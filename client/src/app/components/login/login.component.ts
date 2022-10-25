@@ -5,6 +5,7 @@ import { BaseComponent } from '../base.component';
 
 @Component({
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent extends BaseComponent {
   constructor(private loginService: LoginService, private router: Router) {

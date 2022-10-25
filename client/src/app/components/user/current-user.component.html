@@ -1,0 +1,13 @@
+<ion-popover trigger="current-user" [dismissOnSelect]="true">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item [routerLink]="['/profile', user.id]" [button]="true"
+          >Profile</ion-item
+        >
+        <ion-item (click)="logout()" [button]="true">Logout</ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+<app-user id="current-user" [user]="user"></app-user>

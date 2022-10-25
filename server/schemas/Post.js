@@ -1,11 +1,10 @@
-const { Timestamp } = require("mongodb");
 const mongoose = require("mongoose");
 const { UserSchema } = require("./User");
 
 const PostSchema = new mongoose.Schema(
   {
-    title: String,
-    text: String,
+    title: { type: String, maxLength: 50, required: true },
+    text: { type: String, required: true },
     img: String,
     from: UserSchema,
   },

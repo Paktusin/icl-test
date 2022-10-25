@@ -15,6 +15,9 @@ import { PostModalComponent } from './components/post-modal/post-modal.component
 import { PostsComponent } from './components/posts/posts.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
+import { UserComponent } from './components/user/user.component';
+import { CurrentUserComponent } from './components/user/current-user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { PostComponent } from './components/post/post.component';
     PostsComponent,
     PostModalComponent,
     PostComponent,
+    UserComponent,
+    CurrentUserComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

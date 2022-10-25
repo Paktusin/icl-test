@@ -55,7 +55,7 @@ export class PostModalComponent extends BaseComponent {
         .subscribe(() => {
           this.visible = false;
           this.loading = false;
-          this.form.reset();
+          // this.form.reset();
           this.afterSave.emit();
         })
     );

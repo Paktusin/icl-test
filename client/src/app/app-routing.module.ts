@@ -5,9 +5,15 @@ import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { PostComponent } from './components/post/post.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { PostResolver } from './services/post.resolver';
+import { ProfileResolver } from './services/profile.resolver';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: '',
     canActivate: [LoginService],
@@ -19,17 +25,18 @@ const routes: Routes = [
         component: PostComponent,
         resolve: { post: PostResolver },
       },
+      {
+        path: 'profile/:id',
+        component: ProfileComponent,
+        resolve: { user: ProfileResolver },
+      },
       { path: '', redirectTo: 'posts', pathMatch: 'prefix' },
     ],
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
+  }
 ];
 
 @NgModule({
-  providers: [PostResolver],
+  providers: [PostResolver, ProfileResolver],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],

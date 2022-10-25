@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { from, of } from 'rxjs';
-import { tap, map, switchMap } from 'rxjs/operators';
+import { tap, map, switchMap, catchError } from 'rxjs/operators';
 import { User } from '../interfaces/User';
 import {
   GoogleAuth,
@@ -53,6 +53,10 @@ export class LoginService implements CanActivate {
           return this.http.get<User>('/private/user');
         }
       }),
+      catchError(() => {
+        this.router.navigateByUrl('/login');
+        return of(null);
+      }),
       tap((user) => {
         this.user = user;
       }),
@@ -76,6 +80,17 @@ export class LoginService implements CanActivate {
   attemplGoogleAndLogin(user: GoogleUser) {
     return this.http.post<User>(`/login/google`, {
       token: user.authentication.idToken,
+    });
+  }
+
+  get(id: string) {
+    return this.http.get<User>('/private/user/' + id);
+  }
+
+  logout() {
+    from(GoogleAuth.signOut()).subscribe(() => {
+      this.setToken(undefined);
+      this.router.navigateByUrl('/login');
     });
   }
 }

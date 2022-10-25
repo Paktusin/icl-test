@@ -25,14 +25,15 @@ export class SessionInterceptor implements HttpInterceptor {
       switchMap((token) => {
         const newRequestToApi = req.clone({
           url: environment.apiUrl + req.url,
-          headers: req.headers.set('Authorization', `Bearer ${token}`)
+          headers: req.headers.set('Authorization', `Bearer ${token}`),
         });
         return next.handle(newRequestToApi).pipe(
           tap({
             next: (resp) => {},
             error: (event: HttpEvent<any>) => {
               if (event instanceof HttpErrorResponse && event.status === 401) {
-                this.router.navigate(['login']);
+                this.loginService.setToken(undefined);
+                this.router.navigateByUrl('/login');
                 return;
               }
             },

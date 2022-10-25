@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from 'src/app/interfaces/Post';
+import { User } from 'src/app/interfaces/User';
 import { BaseComponent } from '../base.component';
 
 @Component({
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss'],
+  templateUrl: './profile.component.html',
 })
-export class PostComponent extends BaseComponent {
-  post: Post;
+export class ProfileComponent extends BaseComponent {
+  user: User;
 
   constructor(private activeRoute: ActivatedRoute) {
     super();
     this.activeRoute.data.subscribe((data) => {
-      this.post = data.post;
+      this.user = data.user;
     });
   }
 }
