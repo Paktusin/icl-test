@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 export class BaseComponent implements OnDestroy {
   static defaultSubName = 'default';
   subs = new Map<string, Subscription[]>();
+  loading = false;
 
   ngOnDestroy(): void {
     this.clearAllSubs();

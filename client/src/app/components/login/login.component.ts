@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/login.service';
+import { LoginService } from 'src/app/services/login.service';
 import { BaseComponent } from '../base.component';
 
 @Component({

@@ -11,7 +11,7 @@ import { Preferences } from '@capacitor/preferences';
 import { Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { LoginService } from 'src/login.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Injectable()
 export class SessionInterceptor implements HttpInterceptor {

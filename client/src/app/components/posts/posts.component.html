@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-content scroll-x="false">
+    <ion-infinite-scroll [disabled]="loading">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-list>
+      <ion-item *ngFor="let post of posts">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ post.title }}</ion-card-title>
+            <ion-card-subtitle>{{
+              post.createdAt | date: "medium"
+            }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>{{ post.text }}</ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="modal.open()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<app-post-modal #modal (afterSave)="loadMore(0)"></app-post-modal>

@@ -1,8 +1,8 @@
 const express = require("express");
-const User = require("../schemas/User");
+const { User } = require("../schemas/User");
 const router = express.Router();
 const { OAuth2Client } = require("google-auth-library");
-const audience = require('../config').GC_ID;
+const audience = require("../config").GC_ID;
 const gClient = new OAuth2Client(audience);
 
 router.post("/google", async (req, res, next) => {

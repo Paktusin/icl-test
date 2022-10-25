@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { from, of } from 'rxjs';
 import { tap, map, switchMap } from 'rxjs/operators';
-import { User } from './app/interfaces/user';
+import { User } from '../interfaces/User';
 import {
   GoogleAuth,
   User as GoogleUser,

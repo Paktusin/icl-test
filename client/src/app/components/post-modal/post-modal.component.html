@@ -1,0 +1,30 @@
+<ion-modal #modal [isOpen]="visible" (willDismiss)="visible = false">
+  <ng-template>
+    <ion-content class="ion-padding" [formGroup]="form">
+      <ion-label position="stacked">Create new post</ion-label>
+      <ion-item>
+        <ion-input
+          required
+          formControlName="title"
+          type="text"
+          placeholder="Enter title"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea
+          required
+          formControlName="text"
+          placeholder="Enter text"
+        ></ion-textarea>
+      </ion-item>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button [disabled]="loading || form.invalid" (click)="save()"
+          >Save</ion-button
+        >
+        <ion-button (click)="visible = false">Cancel</ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </ng-template>
+</ion-modal>

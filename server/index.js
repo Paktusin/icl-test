@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const connect = require("./db");
-const User = require("./schemas/User");
 const app = express();
 const port = require("./config").PORT || 3000;
 
