@@ -4,11 +4,10 @@ const { UserSchema } = require("./User");
 
 const PostSchema = new mongoose.Schema(
   {
-    id: String,
+    title: String,
     text: String,
     img: String,
     from: UserSchema,
-    to: [UserSchema],
   },
   { timestamps: true }
 );

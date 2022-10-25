@@ -1,8 +1,16 @@
 <ion-modal #modal [isOpen]="visible" (willDismiss)="visible = false">
   <ng-template>
     <ion-content class="ion-padding" [formGroup]="form">
-      <ion-label position="stacked">Create new post</ion-label>
       <ion-item>
+        <ion-label position="stacked">Image of the post</ion-label>
+        <ion-input
+          formControlName="img"
+          type="text"
+          placeholder="Enter img url"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Title of the post</ion-label>
         <ion-input
           required
           formControlName="title"
@@ -11,6 +19,7 @@
         ></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label position="stacked">Text of the post</ion-label>
         <ion-textarea
           required
           formControlName="text"
@@ -23,7 +32,9 @@
         <ion-button [disabled]="loading || form.invalid" (click)="save()"
           >Save</ion-button
         >
-        <ion-button (click)="visible = false">Cancel</ion-button>
+        <ion-button slot="end" fill="clear" (click)="visible = false"
+          >Cancel</ion-button
+        >
       </ion-toolbar>
     </ion-footer>
   </ng-template>

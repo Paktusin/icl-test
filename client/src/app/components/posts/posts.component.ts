@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Post as Post } from 'src/app/interfaces/Post';
+import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.servie';
 import { BaseComponent } from '../base.component';
 
 @Component({
   templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent extends BaseComponent implements OnInit {
   text = '';
@@ -15,15 +17,21 @@ export class PostsComponent extends BaseComponent implements OnInit {
   posts: Post[] = [];
   form: FormGroup;
   modalVisible = false;
+  delIndex?: number;
 
   constructor(
     private postsService: PostsService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private loginService: LoginService
   ) {
     super();
     this.activeRoute.data.subscribe((data) => {
       this.modalVisible = !!data.new;
     });
+  }
+
+  get user() {
+    return this.loginService.user;
   }
 
   ngOnInit(): void {
@@ -41,6 +49,13 @@ export class PostsComponent extends BaseComponent implements OnInit {
           this.posts = this.posts.concat(messages);
         }
         this.loading = false;
+      })
+    );
+  }
+
+  delete() {
+    this.addSub(
+      this.postsService.delete(this.posts[this.delIndex]).subscribe(() => {
       })
     );
   }

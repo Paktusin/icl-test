@@ -1,21 +1,45 @@
 <ion-content>
-  <ion-content scroll-x="false">
-    <ion-infinite-scroll [disabled]="loading">
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          sizeXl="3"
+          sizeLg="4"
+          sizeMd="6"
+          size="12"
+          *ngFor="let post of posts; let index = index"
+        >
+          <ion-card>
+            <div class="post-img" *ngIf="post.img">
+              <img referrerpolicy="no-referrer" [src]="post.img" />
+            </div>
+            <ion-card-header>
+              <ion-card-title>{{ post.title }}</ion-card-title>
+              <ion-card-subtitle>{{
+                post.createdAt | date: "medium"
+              }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>{{ post.text }}</ion-card-content>
+            <ion-toolbar>
+              <ion-button [routerLink]="[post._id]" fill="clear"
+                >Read more</ion-button
+              >
+              <ion-button
+                slot="end"
+                fill="clear"
+                (click)="delIndex = index"
+                *ngIf="post.from?.id === user.id"
+              >
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-toolbar>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-infinite-scroll>
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    <ion-list>
-      <ion-item *ngFor="let post of posts">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{ post.title }}</ion-card-title>
-            <ion-card-subtitle>{{
-              post.createdAt | date: "medium"
-            }}</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>{{ post.text }}</ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-list>
   </ion-content>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="modal.open()">
@@ -24,3 +48,22 @@
   </ion-fab>
 </ion-content>
 <app-post-modal #modal (afterSave)="loadMore(0)"></app-post-modal>
+<ion-modal
+  [isOpen]="delIndex !== undefined"
+  (willDismiss)="delIndex = undefined"
+>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-button slot="start" (click)="delete()">Delete</ion-button>
+        <ion-title></ion-title>
+        <ion-button slot="end" fill="clear" (click)="delIndex = undefined"
+          >Cancel</ion-button
+        >
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      Are you realy want to delete this post "{{ posts[delIndex].text }}"?
+    </ion-content>
+  </ng-template>
+</ion-modal>

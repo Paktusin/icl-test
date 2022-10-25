@@ -14,6 +14,7 @@ import { MainComponent } from './components/main/main.component';
 import { PostModalComponent } from './components/post-modal/post-modal.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     PostsComponent,
     PostModalComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
