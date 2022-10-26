@@ -6,6 +6,7 @@ import { MainComponent } from './components/main/main.component';
 import { PostComponent } from './components/post/post.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UsersComponent } from './components/users/users';
 import { PostResolver } from './services/post.resolver';
 import { ProfileResolver } from './services/profile.resolver';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     canActivate: [LoginService],
     component: MainComponent,
     children: [
+      { path: 'users', component: UsersComponent },
       { path: 'posts', component: PostsComponent },
       {
         path: 'posts/:id',

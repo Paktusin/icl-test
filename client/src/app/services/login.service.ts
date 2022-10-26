@@ -93,4 +93,8 @@ export class LoginService implements CanActivate {
       this.router.navigateByUrl('/login');
     });
   }
+
+  list() {
+    return this.http.get<User[]>('/private/users');
+  }
 }

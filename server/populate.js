@@ -7,6 +7,13 @@ function randomEl() {
 }
 Array.prototype.random = randomEl;
 
+const images = [
+  "https://www.icl-group.com/wp-content/uploads/2022/10/vic-in-spain-002-1-584x355.jpg",
+  "https://www.icl-group.com/wp-content/uploads/2022/09/shutterstock_2071904225-584x355.jpg",
+  "https://www.icl-group.com/wp-content/uploads/2022/10/shutterstock_515469298-scaled-e1665678137240-584x355.jpg",
+  "https://www.icl-group.com/wp-content/uploads/2022/08/28738_68198_ICL_CaremagD_master_1565X663_1-366x216.jpg",
+];
+
 async function exec() {
   const types = require("./schemas/Types").Types;
   const regions = require("./schemas/Regions").Regions;
@@ -16,7 +23,7 @@ async function exec() {
     Array(1000)
       .fill(null)
       .map(() => ({
-        img: "/static/example.jpg",
+        img: images.random(),
         from: users.random().toObject(),
         title: "What are Completion Fluids?",
         type: types.random(),

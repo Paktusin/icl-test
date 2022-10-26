@@ -8,8 +8,12 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const { limit = 10, skip = 0, userId } = req.query;
-  const posts = await Post.find({ "from.id": userId ?? /.*/ })
+  const { limit = 10, skip = 0, userId, region, type } = req.query;
+  const posts = await Post.find({
+    "from.id": userId ?? /.*/,
+    type: type ?? /.*/,
+    region: region ?? /.*/,
+  })
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit);

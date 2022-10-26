@@ -1,6 +1,11 @@
 <ion-content>
   <ng-content></ng-content>
   <ion-grid style="max-width: 1230px">
+    <ion-row *ngIf="!userId">
+      <ion-col>
+        <app-filter></app-filter>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col
         sizeMd="4"

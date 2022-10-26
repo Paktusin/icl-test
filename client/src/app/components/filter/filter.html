@@ -1,0 +1,36 @@
+<div class="filter">
+  <div class="row">
+    <app-tag
+      [class.primary]="isActive$('', 'type') | async"
+      [routerLink]="['/posts']"
+      [queryParams]="{type:''}"
+      queryParamsHandling="merge"
+      >All topics</app-tag
+    >
+    <app-tag
+      [class.primary]="isActive$(type, 'type') | async"
+      [routerLink]="['/posts']"
+      queryParamsHandling="merge"
+      [queryParams]="{type:type}"
+      *ngFor="let type of $types | async"
+      >{{type}}</app-tag
+    >
+  </div>
+  <div class="row">
+    <app-tag
+      [class.primary]="isActive$('', 'region') | async"
+      [routerLink]="['/posts']"
+      [queryParams]="{region:''}"
+      queryParamsHandling="merge"
+      >All regions</app-tag
+    >
+    <app-tag
+      [class.primary]="isActive$(region, 'region') | async"
+      [routerLink]="['/posts']"
+      queryParamsHandling="merge"
+      [queryParams]="{region:region}"
+      *ngFor="let region of $regions | async"
+      >{{region}}</app-tag
+    >
+  </div>
+</div>

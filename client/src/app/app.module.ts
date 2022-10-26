@@ -21,6 +21,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PostCardComponent } from './components/post-card/post-card';
 import { TagComponent } from './components/tag/tag';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs/breadcrumbs';
+import { UsersComponent } from './components/users/users';
+import { FilterComponent } from './components/filter/filter';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs/bread
     PostCardComponent,
     TagComponent,
     BreadcrumbsComponent,
+    UsersComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .row {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 4px;
+
+    .icl-tag {
+      cursor: pointer;
+    }
+  }
+}

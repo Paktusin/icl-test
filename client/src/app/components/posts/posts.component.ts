@@ -24,6 +24,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
   form: FormGroup;
   modalVisible = false;
   delIndex?: number;
+  filter: any = {};
 
   constructor(
     private postsService: PostsService,
@@ -33,6 +34,10 @@ export class PostsComponent extends BaseComponent implements OnInit {
     super();
     this.activeRoute.data.subscribe((data) => {
       this.modalVisible = !!data.new;
+    });
+    this.activeRoute.queryParams.subscribe((params) => {
+      this.filter = params;
+      this.loadMore(0);
     });
   }
 
@@ -46,17 +51,24 @@ export class PostsComponent extends BaseComponent implements OnInit {
 
   loadMore(page = this.page + 1) {
     this.addSub(
-      this.postsService.list(page, 10, this.userId).subscribe((messages) => {
-        if (messages.length) {
-          this.page = page;
-        }
-        if (page === 0) {
-          this.posts = messages;
-        } else {
-          this.posts = this.posts.concat(messages);
-        }
-        this.infinityScroll.complete();
-      })
+      this.postsService
+        .list({
+          skip: this.page * 10,
+          limit: 10,
+          userId: this.userId,
+          ...this.filter,
+        })
+        .subscribe((messages) => {
+          if (messages.length) {
+            this.page = page;
+          }
+          if (page === 0) {
+            this.posts = messages;
+          } else {
+            this.posts = this.posts.concat(messages);
+          }
+          this.infinityScroll.complete();
+        })
     );
   }
 

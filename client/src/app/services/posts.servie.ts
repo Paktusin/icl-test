@@ -9,14 +9,14 @@ export class PostsService {
   readonly postUrl = '/private/post';
   constructor(private http: HttpClient) {}
 
-  list(page = 0, pageSize = 10, userId?: string) {
-    const params = new URLSearchParams();
-    params.set('skip', (page * pageSize).toString());
-    params.set('limit', pageSize.toString());
-    if (userId) {
-      params.set('userId', userId);
-    }
-    return this.http.get<Post[]>(this.postUrl + `?${params}`);
+  list(params: any) {
+    const urlParams = new URLSearchParams();
+    Object.keys(params).forEach((key) => {
+      if (params[key] !== undefined && params[key] !== '') {
+        urlParams.set(key, params[key]);
+      }
+    });
+    return this.http.get<Post[]>(this.postUrl + `?${urlParams}`);
   }
 
   create(post: Post) {

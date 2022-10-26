@@ -5,6 +5,11 @@ const { User } = require("../schemas/User");
 
 router.use(require("../middleware/auth"));
 
+router.get("/users", verifyGoogleToken, async (req, res, next) => {
+  const users = await User.find().sort({ name: 1 });
+  return res.json(users);
+});
+
 router.get("/user", verifyGoogleToken, async (req, res, next) => {
   return next();
 });
