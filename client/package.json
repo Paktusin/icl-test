@@ -2,7 +2,7 @@
   "name": "icl-test",
   "version": "0.0.1",
   "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "https://paktisin.github.io/icl-test",
   "scripts": {
     "dev": "ionic serve",
     "ng": "ng",
@@ -10,7 +10,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --base-href https://paktusin.github.io/icl-test/ && gh-pages -d www"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "@ionic/cli": "6.20.3",
     "@types/pouchdb": "^6.4.0",
     "cordova-plugin-advanced-http": "^3.3.1",
+    "gh-pages": "^4.0.0",
     "google-auth-library": "^8.6.0",
     "ionicons": "^6.0.3",
     "pouchdb": "^7.3.0",
@@ -48,7 +50,7 @@
     "@angular-eslint/eslint-plugin": "~13.0.1",
     "@angular-eslint/eslint-plugin-template": "~13.0.1",
     "@angular-eslint/template-parser": "~13.0.1",
-    "@angular/cli": "^14.0.0",
+    "@angular/cli": "14.2.6",
     "@angular/compiler": "^14.0.0",
     "@angular/compiler-cli": "^14.0.0",
     "@angular/language-service": "^14.0.0",

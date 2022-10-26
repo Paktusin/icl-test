@@ -33,12 +33,12 @@
             "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": [],
             "aot": false,
-            "vendorChunk": true,
+            "vendorChunk": false,
             "extractLicenses": false,
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": false
           },
           "configurations": {
             "production": {
@@ -121,10 +121,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "e2e": {
@@ -146,9 +143,7 @@
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ],
+    "schematicCollections": ["@ionic/angular-toolkit"],
     "analytics": "dac780ef-0cc6-4831-8e76-ad33c629c796"
   },
   "schematics": {

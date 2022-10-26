@@ -38,7 +38,10 @@ const routes: Routes = [
 @NgModule({
   providers: [PostResolver, ProfileResolver],
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
   exports: [RouterModule],
 })
