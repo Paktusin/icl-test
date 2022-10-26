@@ -21718,7 +21718,7 @@ module.exports = "<ng-container *ngFor=\"let item of items; let last = last\">\r
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\r\n  <ion-content>\r\n    <div class=\"centered\">\r\n      <img height=\"100\" width=\"100\" src=\"/assets/logo.svg\" />\r\n      <ion-button [expand]=\"false\" (click)=\"loginWithGoogle()\"\r\n        >Sign in with google</ion-button\r\n      >\r\n    </div>\r\n  </ion-content>\r\n</ion-app>\r\n";
+module.exports = "<ion-app>\r\n  <ion-content>\r\n    <div class=\"centered\">\r\n      <img height=\"100\" width=\"100\" src=\"assets/logo.svg\" />\r\n      <ion-button [expand]=\"false\" (click)=\"loginWithGoogle()\"\r\n        >Sign in with google</ion-button\r\n      >\r\n    </div>\r\n  </ion-content>\r\n</ion-app>\r\n";
 
 /***/ }),
 
