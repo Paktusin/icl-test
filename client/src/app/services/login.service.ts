@@ -22,7 +22,7 @@ export class LoginService implements CanActivate {
   constructor(private router: Router, private http: HttpClient) {
     GoogleAuth.initialize({
       clientId:
-        '564169523192-ral083ni5ft6rfmahepe4oenn5990hsa.apps.googleusercontent.com',
+        '564169523192-9ovogs05ka21qoo7r9n00a8l51lu5nco.apps.googleusercontent.com',
       scopes: ['profile', 'email'],
     });
   }
