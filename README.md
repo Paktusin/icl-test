@@ -6,10 +6,14 @@ set google api tokens in /server.env and set id on loginService (need to pass th
 set .env database path to mongoDB
 
 in ./server folder:
+```
 yarn
 yarn genkeys
 yarn dev
+```
 
 in ./client folder:
+```
 yarn
 yarn dev
+```
