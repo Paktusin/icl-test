@@ -1,13 +1,12 @@
 .icl-tag {
   font-size: 14px;
-  padding: 0 20px;
+  padding: 2px 20px;
   border: 2px solid var(--ion-color-secondary);
   border-radius: 7px 50px 7px 50px;
-  cursor: pointer;
   background-color: transparent;
   font-family: "Inter", sans-serif;
   margin-right: 6px;
-  white-space: "nowrap";
+  white-space: nowrap;
 
   &.primary {
     background-color: var(--ion-color-secondary);

@@ -1,0 +1,4 @@
+<ng-container *ngFor="let item of items; let last = last">
+  <a class="crumb" [class.link]="!!item.url" [routerLink]="item.url && [item.url]"> {{item.name}} </a>
+  <ion-icon *ngIf="!last" name="chevron-forward-outline"></ion-icon>
+</ng-container>

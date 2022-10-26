@@ -20,6 +20,7 @@ import { CurrentUserComponent } from './components/user/current-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PostCardComponent } from './components/post-card/post-card';
 import { TagComponent } from './components/tag/tag';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs/breadcrumbs';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TagComponent } from './components/tag/tag';
     ProfileComponent,
     PostCardComponent,
     TagComponent,
+    BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,

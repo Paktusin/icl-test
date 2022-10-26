@@ -39,6 +39,17 @@ ion-card {
   src: url("/assets/fonts/font-2.woff2") format("woff2");
 }
 
+html {
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+}
+
 :root {
   --ion-font-family: "ICLFont", sans-serif;
 }
