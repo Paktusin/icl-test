@@ -35,10 +35,6 @@ export class PostsComponent extends BaseComponent implements OnInit {
     this.activeRoute.data.subscribe((data) => {
       this.modalVisible = !!data.new;
     });
-    this.activeRoute.queryParams.subscribe((params) => {
-      this.filter = params;
-      this.loadMore(0);
-    });
   }
 
   get currentUser() {
@@ -46,7 +42,10 @@ export class PostsComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadMore(0);
+    this.activeRoute.queryParams.subscribe((params) => {
+      this.filter = params;
+      this.loadMore(0);
+    });
   }
 
   loadMore(page = this.page + 1) {
