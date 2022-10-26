@@ -9,7 +9,10 @@ export class BaseComponent implements OnDestroy {
   loading = false;
 
   imgUrl(url) {
-    return environment.apiUrl + url;
+    if (!url.indexOf('/static')) {
+      return environment.apiUrl + url;
+    }
+    return url;
   }
 
   ngOnDestroy(): void {

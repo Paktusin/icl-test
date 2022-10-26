@@ -1,13 +1,6 @@
 <ion-content>
   <ng-content></ng-content>
   <ion-grid style="max-width: 1230px">
-    <ion-row *ngIf="!userId">
-      <ion-col>
-        <div>
-          <app-tag *ngFor="let type of $types async"></app-tag>
-        </div>
-      </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col
         sizeMd="4"

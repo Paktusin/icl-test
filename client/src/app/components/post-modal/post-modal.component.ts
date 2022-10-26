@@ -43,7 +43,7 @@ export class PostModalComponent extends BaseComponent {
       type: [],
     });
     this.$regions = this.resourceService.getRegions();
-    this.$types = this.resourceService.getRegions();
+    this.$types = this.resourceService.getTypes();
   }
 
   open() {
