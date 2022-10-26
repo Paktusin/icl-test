@@ -4,7 +4,7 @@
   "author": "Ionic Framework",
   "homepage": "https://paktisin.github.io/icl-test",
   "scripts": {
-    "dev": "ionic serve",
+    "dev": "ionic serve --ssl",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
