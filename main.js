@@ -966,7 +966,7 @@ let LoginService = class LoginService {
         this.router = router;
         this.http = http;
         _codetrix_studio_capacitor_google_auth__WEBPACK_IMPORTED_MODULE_0__.GoogleAuth.initialize({
-            clientId: '564169523192-ral083ni5ft6rfmahepe4oenn5990hsa.apps.googleusercontent.com',
+            clientId: '564169523192-9ovogs05ka21qoo7r9n00a8l51lu5nco.apps.googleusercontent.com',
             scopes: ['profile', 'email'],
         });
     }
