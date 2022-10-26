@@ -56,7 +56,7 @@ const routes = [
             },
             { path: '', redirectTo: 'posts', pathMatch: 'prefix' },
         ],
-    },
+    }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -21729,7 +21729,7 @@ module.exports = "<ion-app>\r\n  <ion-content>\r\n    <div class=\"centered\">\r
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-page class=\"ion-page\" id=\"main-content\">\r\n  <ion-header>\r\n    <ion-toolbar>\r\n      <img\r\n        class=\"logo\"\r\n        slot=\"start\"\r\n        height=\"48\"\r\n        width=\"48\"\r\n        src=\"/assets/logo.svg\"\r\n      />\r\n      <app-current-user slot=\"start\" *ngIf=\"user\"></app-current-user>\r\n      <ion-buttons slot=\"end\">\r\n        <ion-menu-toggle>\r\n          <ion-button>\r\n            <ion-icon slot=\"icon-only\" name=\"menu\"></ion-icon>\r\n          </ion-button>\r\n        </ion-menu-toggle>\r\n      </ion-buttons>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content class=\"ion-padding\">\r\n    <ion-router-outlet></ion-router-outlet>\r\n  </ion-content>\r\n</ion-page>\r\n<ion-menu-controller></ion-menu-controller>\r\n<ion-menu content-id=\"main-content\" side=\"end\">\r\n  <ion-content>\r\n    <ion-list>\r\n      <ion-menu-toggle auto-hide=\"false\">\r\n        <ion-item [routerLink]=\"['/posts']\" button>\r\n          <ion-label>Blog</ion-label>\r\n        </ion-item>\r\n        <ion-item target=\"_blank\" href=\"https://paktusin.github.io/\" button>\r\n          <ion-label>Career</ion-label>\r\n        </ion-item>\r\n      </ion-menu-toggle>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>\r\n";
+module.exports = "<ion-page class=\"ion-page\" id=\"main-content\">\r\n  <ion-header>\r\n    <ion-toolbar>\r\n      <img\r\n        class=\"logo\"\r\n        slot=\"start\"\r\n        height=\"48\"\r\n        width=\"48\"\r\n        src=\"assets/logo.svg\"\r\n      />\r\n      <app-current-user slot=\"start\" *ngIf=\"user\"></app-current-user>\r\n      <ion-buttons slot=\"end\">\r\n        <ion-menu-toggle>\r\n          <ion-button>\r\n            <ion-icon slot=\"icon-only\" name=\"menu\"></ion-icon>\r\n          </ion-button>\r\n        </ion-menu-toggle>\r\n      </ion-buttons>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content class=\"ion-padding\">\r\n    <ion-router-outlet></ion-router-outlet>\r\n  </ion-content>\r\n</ion-page>\r\n<ion-menu-controller></ion-menu-controller>\r\n<ion-menu content-id=\"main-content\" side=\"end\">\r\n  <ion-content>\r\n    <ion-list>\r\n      <ion-menu-toggle auto-hide=\"false\">\r\n        <ion-item [routerLink]=\"['/posts']\" button>\r\n          <ion-label>Blog</ion-label>\r\n        </ion-item>\r\n        <ion-item target=\"_blank\" href=\"https://paktusin.github.io/\" button>\r\n          <ion-label>Career</ion-label>\r\n        </ion-item>\r\n      </ion-menu-toggle>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>\r\n";
 
 /***/ }),
 

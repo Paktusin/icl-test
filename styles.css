@@ -1286,35 +1286,35 @@ ion-card {
   font-style: normal;
   font-weight: 300;
   font-display: auto;
-  src: url("/assets/fonts/inter-normal-300.woff2") format("woff2");
+  src: url('inter-normal-300.woff2') format("woff2");
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url("/assets/fonts/inter-normal-400.woff2") format("woff2");
+  src: url('inter-normal-400.woff2') format("woff2");
 }
 @font-face {
   font-family: "ICLFont";
   font-style: normal;
   font-weight: 300;
   font-display: auto;
-  src: url("/assets/fonts/font.woff2") format("woff2");
+  src: url('font.woff2') format("woff2");
 }
 @font-face {
   font-family: "ICLFont";
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url("/assets/fonts/font-1.woff2") format("woff2");
+  src: url('font-1.woff2') format("woff2");
 }
 @font-face {
   font-family: "ICLFont";
   font-style: normal;
   font-weight: 500;
   font-display: auto;
-  src: url("/assets/fonts/font-2.woff2") format("woff2");
+  src: url('font-2.woff2') format("woff2");
 }
 html {
   font-weight: 300;
