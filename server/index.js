@@ -1,10 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const connect = require("./db");
-const app = express();
+const fs = require("fs");
+const path = require("path");
+const https = require("https");
 const port = require("./config").PORT || 3000;
 
 connect();
+const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -19,6 +22,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
 
-app.listen(port, () => {
+const options = {
+  key: fs.readFileSync(path.resolve("./ssl.key")),
+  cert: fs.readFileSync(path.resolve("./ssl.crt")),
+};
+https.createServer(options, app).listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
