@@ -1,6 +1,7 @@
 <div class="filter">
   <div class="row">
     <app-tag
+      class="first"
       [class.primary]="isActive$('', 'type') | async"
       [routerLink]="['/posts']"
       [queryParams]="{type:''}"
@@ -18,6 +19,7 @@
   </div>
   <div class="row">
     <app-tag
+      class="first"
       [class.primary]="isActive$('', 'region') | async"
       [routerLink]="['/posts']"
       [queryParams]="{region:''}"
