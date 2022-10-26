@@ -56,7 +56,7 @@ const routes = [
             },
             { path: '', redirectTo: 'posts', pathMatch: 'prefix' },
         ],
-    }
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -64,7 +64,10 @@ AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.NgModule)({
         providers: [_services_post_resolver__WEBPACK_IMPORTED_MODULE_6__.PostResolver, _services_profile_resolver__WEBPACK_IMPORTED_MODULE_7__.ProfileResolver],
         imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_10__.PreloadAllModules }),
+            _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule.forRoot(routes, {
+                useHash: true,
+                preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_10__.PreloadAllModules,
+            }),
         ],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule],
     })
