@@ -11,17 +11,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ 2816);
 /* harmony import */ var src_app_services_login_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/login.service */ 4120);
 /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/login/login.component */ 7143);
 /* harmony import */ var _components_main_main_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/main/main.component */ 2409);
 /* harmony import */ var _components_post_post_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/post/post.component */ 3915);
 /* harmony import */ var _components_posts_posts_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/posts/posts.component */ 4168);
 /* harmony import */ var _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/profile/profile.component */ 7094);
-/* harmony import */ var _services_post_resolver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/post.resolver */ 6459);
-/* harmony import */ var _services_profile_resolver__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/profile.resolver */ 7678);
+/* harmony import */ var _components_users_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/users/users */ 1321);
+/* harmony import */ var _services_post_resolver__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/post.resolver */ 6459);
+/* harmony import */ var _services_profile_resolver__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/profile.resolver */ 7678);
+
 
 
 
@@ -43,16 +45,17 @@ const routes = [
         canActivate: [src_app_services_login_service__WEBPACK_IMPORTED_MODULE_0__.LoginService],
         component: _components_main_main_component__WEBPACK_IMPORTED_MODULE_2__.MainComponent,
         children: [
+            { path: 'users', component: _components_users_users__WEBPACK_IMPORTED_MODULE_6__.UsersComponent },
             { path: 'posts', component: _components_posts_posts_component__WEBPACK_IMPORTED_MODULE_4__.PostsComponent },
             {
                 path: 'posts/:id',
                 component: _components_post_post_component__WEBPACK_IMPORTED_MODULE_3__.PostComponent,
-                resolve: { post: _services_post_resolver__WEBPACK_IMPORTED_MODULE_6__.PostResolver },
+                resolve: { post: _services_post_resolver__WEBPACK_IMPORTED_MODULE_7__.PostResolver },
             },
             {
                 path: 'profile/:id',
                 component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_5__.ProfileComponent,
-                resolve: { user: _services_profile_resolver__WEBPACK_IMPORTED_MODULE_7__.ProfileResolver },
+                resolve: { user: _services_profile_resolver__WEBPACK_IMPORTED_MODULE_8__.ProfileResolver },
             },
             { path: '', redirectTo: 'posts', pathMatch: 'prefix' },
         ],
@@ -60,16 +63,16 @@ const routes = [
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
-AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.NgModule)({
-        providers: [_services_post_resolver__WEBPACK_IMPORTED_MODULE_6__.PostResolver, _services_profile_resolver__WEBPACK_IMPORTED_MODULE_7__.ProfileResolver],
+AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.NgModule)({
+        providers: [_services_post_resolver__WEBPACK_IMPORTED_MODULE_7__.PostResolver, _services_profile_resolver__WEBPACK_IMPORTED_MODULE_8__.ProfileResolver],
         imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule.forRoot(routes, {
+            _angular_router__WEBPACK_IMPORTED_MODULE_11__.RouterModule.forRoot(routes, {
                 useHash: true,
-                preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_10__.PreloadAllModules,
+                preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_11__.PreloadAllModules,
             }),
         ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_11__.RouterModule],
     })
 ], AppRoutingModule);
 
@@ -123,21 +126,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/platform-browser */ 318);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/router */ 2816);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common/http */ 8784);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser */ 318);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/common/http */ 8784);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component */ 5041);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-routing.module */ 158);
 /* harmony import */ var _interceptors_session_interceptor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./interceptors/session.interceptor */ 7222);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/common */ 6362);
 /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login/login.component */ 7143);
 /* harmony import */ var _components_main_main_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/main/main.component */ 2409);
 /* harmony import */ var _components_post_modal_post_modal_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/post-modal/post-modal.component */ 8068);
 /* harmony import */ var _components_posts_posts_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/posts/posts.component */ 4168);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/forms */ 587);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/forms */ 587);
 /* harmony import */ var _components_post_post_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/post/post.component */ 3915);
 /* harmony import */ var _components_user_user_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/user/user.component */ 241);
 /* harmony import */ var _components_user_current_user_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/user/current-user.component */ 1537);
@@ -145,6 +148,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_post_card_post_card__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/post-card/post-card */ 3195);
 /* harmony import */ var _components_tag_tag__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/tag/tag */ 2899);
 /* harmony import */ var _components_breadcrumbs_breadcrumbs_breadcrumbs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/breadcrumbs/breadcrumbs/breadcrumbs */ 2777);
+/* harmony import */ var _components_users_users__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/users/users */ 1321);
+/* harmony import */ var _components_filter_filter__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/filter/filter */ 893);
+
+
 
 
 
@@ -169,8 +176,8 @@ __webpack_require__.r(__webpack_exports__);
 
 let AppModule = class AppModule {
 };
-AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_15__.NgModule)({
+AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_16__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_17__.NgModule)({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent,
             _components_login_login_component__WEBPACK_IMPORTED_MODULE_3__.LoginComponent,
@@ -184,23 +191,25 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([
             _components_post_card_post_card__WEBPACK_IMPORTED_MODULE_11__.PostCardComponent,
             _components_tag_tag__WEBPACK_IMPORTED_MODULE_12__.TagComponent,
             _components_breadcrumbs_breadcrumbs_breadcrumbs__WEBPACK_IMPORTED_MODULE_13__.BreadcrumbsComponent,
+            _components_users_users__WEBPACK_IMPORTED_MODULE_14__.UsersComponent,
+            _components_filter_filter__WEBPACK_IMPORTED_MODULE_15__.FilterComponent,
         ],
         imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_16__.BrowserModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_17__.IonicModule.forRoot(),
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_18__.BrowserModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_19__.IonicModule.forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_18__.HttpClientModule,
-            _angular_common__WEBPACK_IMPORTED_MODULE_19__.CommonModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_20__.FormsModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_20__.ReactiveFormsModule,
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_20__.HttpClientModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_21__.CommonModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_22__.FormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_22__.ReactiveFormsModule,
         ],
         providers: [
             {
-                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_18__.HTTP_INTERCEPTORS,
+                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_20__.HTTP_INTERCEPTORS,
                 useClass: _interceptors_session_interceptor__WEBPACK_IMPORTED_MODULE_2__.SessionInterceptor,
                 multi: true,
             },
-            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_21__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_17__.IonicRouteStrategy },
+            { provide: _angular_router__WEBPACK_IMPORTED_MODULE_23__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_19__.IonicRouteStrategy },
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
     })
@@ -320,6 +329,61 @@ BreadcrumbsComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
         styles: [_breadcrumbs_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], BreadcrumbsComponent);
+
+
+
+/***/ }),
+
+/***/ 893:
+/*!*********************************************!*\
+  !*** ./src/app/components/filter/filter.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FilterComponent": () => (/* binding */ FilterComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _filter_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./filter.html?ngResource */ 8877);
+/* harmony import */ var _filter_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filter.scss?ngResource */ 8057);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 2816);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 6942);
+/* harmony import */ var src_app_services_resource_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/resource.service */ 7467);
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../base.component */ 6325);
+
+
+
+
+
+
+
+
+let FilterComponent = class FilterComponent extends _base_component__WEBPACK_IMPORTED_MODULE_3__.BaseComponent {
+    constructor(resourceService, activeRoute) {
+        super();
+        this.resourceService = resourceService;
+        this.activeRoute = activeRoute;
+        this.$regions = this.resourceService.getRegions();
+        this.$types = this.resourceService.getTypes();
+    }
+    isActive$(str, param) {
+        return this.activeRoute.queryParamMap.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.map)((paramMap) => paramMap.get(param) === str || !paramMap.has(param) && !str));
+    }
+};
+FilterComponent.ctorParameters = () => [
+    { type: src_app_services_resource_service__WEBPACK_IMPORTED_MODULE_2__.ResourceService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.ActivatedRoute }
+];
+FilterComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+        selector: 'app-filter',
+        template: _filter_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_filter_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], FilterComponent);
 
 
 
@@ -642,8 +706,13 @@ let PostsComponent = class PostsComponent extends _base_component__WEBPACK_IMPOR
         this.page = 0;
         this.posts = [];
         this.modalVisible = false;
+        this.filter = {};
         this.activeRoute.data.subscribe((data) => {
             this.modalVisible = !!data.new;
+        });
+        this.activeRoute.queryParams.subscribe((params) => {
+            this.filter = params;
+            this.loadMore(0);
         });
     }
     get currentUser() {
@@ -653,7 +722,9 @@ let PostsComponent = class PostsComponent extends _base_component__WEBPACK_IMPOR
         this.loadMore(0);
     }
     loadMore(page = this.page + 1) {
-        this.addSub(this.postsService.list(page, 10, this.userId).subscribe((messages) => {
+        this.addSub(this.postsService
+            .list(Object.assign({ skip: this.page * 10, limit: 10, userId: this.userId }, this.filter))
+            .subscribe((messages) => {
             if (messages.length) {
                 this.page = page;
             }
@@ -867,6 +938,53 @@ UserComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
+/***/ 1321:
+/*!*******************************************!*\
+  !*** ./src/app/components/users/users.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UsersComponent": () => (/* binding */ UsersComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _users_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users.html?ngResource */ 4158);
+/* harmony import */ var _users_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users.scss?ngResource */ 7015);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var src_app_services_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/login.service */ 4120);
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../base.component */ 6325);
+
+
+
+
+
+
+let UsersComponent = class UsersComponent extends _base_component__WEBPACK_IMPORTED_MODULE_3__.BaseComponent {
+    constructor(loginService) {
+        super();
+        this.loginService = loginService;
+        this.users = [];
+    }
+    ngOnInit() {
+        this.addSub(this.loginService.list().subscribe((users) => (this.users = users)));
+    }
+};
+UsersComponent.ctorParameters = () => [
+    { type: src_app_services_login_service__WEBPACK_IMPORTED_MODULE_2__.LoginService }
+];
+UsersComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+        template: _users_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_users_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], UsersComponent);
+
+
+
+/***/ }),
+
 /***/ 7222:
 /*!*****************************************************!*\
   !*** ./src/app/interceptors/session.interceptor.ts ***!
@@ -1019,6 +1137,9 @@ let LoginService = class LoginService {
             this.router.navigateByUrl('/login');
         });
     }
+    list() {
+        return this.http.get('/private/users');
+    }
 };
 LoginService.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router },
@@ -1092,14 +1213,14 @@ let PostsService = class PostsService {
         this.http = http;
         this.postUrl = '/private/post';
     }
-    list(page = 0, pageSize = 10, userId) {
-        const params = new URLSearchParams();
-        params.set('skip', (page * pageSize).toString());
-        params.set('limit', pageSize.toString());
-        if (userId) {
-            params.set('userId', userId);
-        }
-        return this.http.get(this.postUrl + `?${params}`);
+    list(params) {
+        const urlParams = new URLSearchParams();
+        Object.keys(params).forEach((key) => {
+            if (params[key] !== undefined && params[key] !== '') {
+                urlParams.set(key, params[key]);
+            }
+        });
+        return this.http.get(this.postUrl + `?${urlParams}`);
     }
     create(post) {
         return this.http.post(this.postUrl, post);
@@ -1230,7 +1351,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiUrl: 'https://89.108.114.231:3000',
+    apiUrl: 'https://localhost:3000',
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -21623,6 +21744,17 @@ module.exports = ".icl-breadcrumbs {\n  color: var(--ion-text-color);\n  margin-
 
 /***/ }),
 
+/***/ 8057:
+/*!**********************************************************!*\
+  !*** ./src/app/components/filter/filter.scss?ngResource ***!
+  \**********************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = ".filter {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n.filter .row {\n  flex-wrap: wrap;\n  display: flex;\n  gap: 4px;\n}\n.filter .row .icl-tag {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpbHRlci5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsU0FBQTtBQUNGO0FBQ0U7RUFDRSxlQUFBO0VBQ0EsYUFBQTtFQUNBLFFBQUE7QUFDSjtBQUNJO0VBQ0UsZUFBQTtBQUNOIiwiZmlsZSI6ImZpbHRlci5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZpbHRlciB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGdhcDogMTZweDtcclxuXHJcbiAgLnJvdyB7XHJcbiAgICBmbGV4LXdyYXA6IHdyYXA7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZ2FwOiA0cHg7XHJcblxyXG4gICAgLmljbC10YWcge1xyXG4gICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcbiJdfQ== */";
+
+/***/ }),
+
 /***/ 9436:
 /*!******************************************************************!*\
   !*** ./src/app/components/login/login.component.scss?ngResource ***!
@@ -21689,6 +21821,17 @@ module.exports = ".icl-tag {\n  font-size: 14px;\n  padding: 2px 20px;\n  border
 
 /***/ }),
 
+/***/ 7015:
+/*!********************************************************!*\
+  !*** ./src/app/components/users/users.scss?ngResource ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = ".user-card {\n  display: flex;\n  flex-direction: column;\n  cursor: pointer;\n  padding: 0 30px;\n}\n.user-card:hover img {\n  transform: scale(1.07);\n}\n.user-card .img {\n  height: 50vw;\n  max-height: 250px;\n  overflow: hidden;\n  border-radius: 8px;\n}\n.user-card .img img {\n  transition: transform 0.3s ease;\n  height: 100%;\n  max-inline-size: 100%;\n  aspect-ratio: 2/1;\n  object-fit: cover;\n  object-position: top center;\n  width: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXJzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtBQUNGO0FBQ0U7RUFDRSxzQkFBQTtBQUNKO0FBRUU7RUFDRSxZQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0FBQUo7QUFFSTtFQUNFLCtCQUFBO0VBQ0EsWUFBQTtFQUNBLHFCQUFBO0VBQ0EsaUJBQUE7RUFDQSxpQkFBQTtFQUNBLDJCQUFBO0VBQ0EsV0FBQTtBQUFOIiwiZmlsZSI6InVzZXJzLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudXNlci1jYXJkIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG4gIHBhZGRpbmc6IDAgMzBweDtcclxuXHJcbiAgJjpob3ZlciBpbWcge1xyXG4gICAgdHJhbnNmb3JtOiBzY2FsZSgxLjA3KTtcclxuICB9XHJcblxyXG4gIC5pbWcge1xyXG4gICAgaGVpZ2h0OiA1MHZ3O1xyXG4gICAgbWF4LWhlaWdodDogMjUwcHg7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gICAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG5cclxuICAgIGltZyB7XHJcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjNzIGVhc2U7XHJcbiAgICAgIGhlaWdodDogMTAwJTtcclxuICAgICAgbWF4LWlubGluZS1zaXplOiAxMDAlO1xyXG4gICAgICBhc3BlY3QtcmF0aW86IDIvMTtcclxuICAgICAgb2JqZWN0LWZpdDogY292ZXI7XHJcbiAgICAgIG9iamVjdC1wb3NpdGlvbjogdG9wIGNlbnRlcjtcclxuICAgICAgd2lkdGg6IGF1dG87XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcbiJdfQ== */";
+
+/***/ }),
+
 /***/ 3383:
 /*!***********************************************!*\
   !*** ./src/app/app.component.html?ngResource ***!
@@ -21711,6 +21854,17 @@ module.exports = "<ng-container *ngFor=\"let item of items; let last = last\">\r
 
 /***/ }),
 
+/***/ 8877:
+/*!**********************************************************!*\
+  !*** ./src/app/components/filter/filter.html?ngResource ***!
+  \**********************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = "<div class=\"filter\">\r\n  <div class=\"row\">\r\n    <app-tag\r\n      [class.primary]=\"isActive$('', 'type') | async\"\r\n      [routerLink]=\"['/posts']\"\r\n      [queryParams]=\"{type:''}\"\r\n      queryParamsHandling=\"merge\"\r\n      >All topics</app-tag\r\n    >\r\n    <app-tag\r\n      [class.primary]=\"isActive$(type, 'type') | async\"\r\n      [routerLink]=\"['/posts']\"\r\n      queryParamsHandling=\"merge\"\r\n      [queryParams]=\"{type:type}\"\r\n      *ngFor=\"let type of $types | async\"\r\n      >{{type}}</app-tag\r\n    >\r\n  </div>\r\n  <div class=\"row\">\r\n    <app-tag\r\n      [class.primary]=\"isActive$('', 'region') | async\"\r\n      [routerLink]=\"['/posts']\"\r\n      [queryParams]=\"{region:''}\"\r\n      queryParamsHandling=\"merge\"\r\n      >All regions</app-tag\r\n    >\r\n    <app-tag\r\n      [class.primary]=\"isActive$(region, 'region') | async\"\r\n      [routerLink]=\"['/posts']\"\r\n      queryParamsHandling=\"merge\"\r\n      [queryParams]=\"{region:region}\"\r\n      *ngFor=\"let region of $regions | async\"\r\n      >{{region}}</app-tag\r\n    >\r\n  </div>\r\n</div>\r\n";
+
+/***/ }),
+
 /***/ 4437:
 /*!******************************************************************!*\
   !*** ./src/app/components/login/login.component.html?ngResource ***!
@@ -21729,7 +21883,7 @@ module.exports = "<ion-app>\r\n  <ion-content>\r\n    <div class=\"centered\">\r
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-page class=\"ion-page\" id=\"main-content\">\r\n  <ion-header>\r\n    <ion-toolbar>\r\n      <img\r\n        class=\"logo\"\r\n        slot=\"start\"\r\n        height=\"48\"\r\n        width=\"48\"\r\n        src=\"assets/logo.svg\"\r\n      />\r\n      <app-current-user slot=\"start\" *ngIf=\"user\"></app-current-user>\r\n      <ion-buttons slot=\"end\">\r\n        <ion-menu-toggle>\r\n          <ion-button>\r\n            <ion-icon slot=\"icon-only\" name=\"menu\"></ion-icon>\r\n          </ion-button>\r\n        </ion-menu-toggle>\r\n      </ion-buttons>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content class=\"ion-padding\">\r\n    <ion-router-outlet></ion-router-outlet>\r\n  </ion-content>\r\n</ion-page>\r\n<ion-menu-controller></ion-menu-controller>\r\n<ion-menu content-id=\"main-content\" side=\"end\">\r\n  <ion-content>\r\n    <ion-list>\r\n      <ion-menu-toggle auto-hide=\"false\">\r\n        <ion-item [routerLink]=\"['/posts']\" button>\r\n          <ion-label>Blog</ion-label>\r\n        </ion-item>\r\n        <ion-item target=\"_blank\" href=\"https://paktusin.github.io/\" button>\r\n          <ion-label>Career</ion-label>\r\n        </ion-item>\r\n      </ion-menu-toggle>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>\r\n";
+module.exports = "<ion-page class=\"ion-page\" id=\"main-content\">\r\n  <ion-header>\r\n    <ion-toolbar>\r\n      <img\r\n        class=\"logo\"\r\n        slot=\"start\"\r\n        height=\"48\"\r\n        width=\"48\"\r\n        src=\"assets/logo.svg\"\r\n      />\r\n      <app-current-user slot=\"start\" *ngIf=\"user\"></app-current-user>\r\n      <ion-buttons slot=\"end\">\r\n        <ion-menu-toggle>\r\n          <ion-button>\r\n            <ion-icon slot=\"icon-only\" name=\"menu\"></ion-icon>\r\n          </ion-button>\r\n        </ion-menu-toggle>\r\n      </ion-buttons>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content class=\"ion-padding\">\r\n    <ion-router-outlet></ion-router-outlet>\r\n  </ion-content>\r\n</ion-page>\r\n<ion-menu-controller></ion-menu-controller>\r\n<ion-menu content-id=\"main-content\" side=\"end\">\r\n  <ion-content>\r\n    <ion-list>\r\n      <ion-menu-toggle auto-hide=\"false\">\r\n        <ion-item [routerLink]=\"['/posts']\" button>\r\n          <ion-label>Blog</ion-label>\r\n        </ion-item>\r\n        <ion-item [routerLink]=\"['/users']\" button>\r\n          <ion-label>Users</ion-label>\r\n        </ion-item>\r\n        <ion-item target=\"_blank\" href=\"https://paktusin.github.io/\" button>\r\n          <ion-label>Career</ion-label>\r\n        </ion-item>\r\n      </ion-menu-toggle>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>\r\n";
 
 /***/ }),
 
@@ -21773,7 +21927,7 @@ module.exports = "<ion-content *ngIf=\"post\" class=\"post\">\r\n  <ion-grid>\r\
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-content>\r\n  <ng-content></ng-content>\r\n  <ion-grid style=\"max-width: 1230px\">\r\n    <ion-row>\r\n      <ion-col\r\n        sizeMd=\"4\"\r\n        sizeSm=\"6\"\r\n        size=\"12\"\r\n        *ngFor=\"let post of posts; let index = index\"\r\n      >\r\n        <app-post-card\r\n          [post]=\"post\"\r\n          [canDelete]=\"userId === currentUser.id\"\r\n          (delete)=\"delIndex = index\"\r\n          [hideAuthor]=\"!!userId\"\r\n        ></app-post-card>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n  <ion-infinite-scroll (ionInfinite)=\"loadMore()\">\r\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\r\n  </ion-infinite-scroll>\r\n</ion-content>\r\n<ion-fab\r\n  *ngIf=\"!userId || userId === currentUser.id\"\r\n  vertical=\"bottom\"\r\n  horizontal=\"center\"\r\n  slot=\"fixed\"\r\n>\r\n  <ion-fab-button (click)=\"modal.open()\">\r\n    <ion-icon name=\"add\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n<app-post-modal #modal (afterSave)=\"loadMore(0)\"></app-post-modal>\r\n<ion-modal\r\n  [isOpen]=\"delIndex !== undefined\"\r\n  (willDismiss)=\"delIndex = undefined\"\r\n>\r\n  <ng-template>\r\n    <ion-header>\r\n      <ion-toolbar>\r\n        <ion-button slot=\"start\" (click)=\"delete()\">Delete</ion-button>\r\n        <ion-title></ion-title>\r\n        <ion-button slot=\"end\" fill=\"clear\" (click)=\"delIndex = undefined\"\r\n          >Cancel</ion-button\r\n        >\r\n      </ion-toolbar>\r\n    </ion-header>\r\n    <ion-content class=\"ion-padding\">\r\n      Are you realy want to delete this post \"{{ posts[delIndex].text }}\"?\r\n    </ion-content>\r\n  </ng-template>\r\n</ion-modal>\r\n";
+module.exports = "<ion-content>\r\n  <ng-content></ng-content>\r\n  <ion-grid style=\"max-width: 1230px\">\r\n    <ion-row *ngIf=\"!userId\">\r\n      <ion-col>\r\n        <app-filter></app-filter>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col\r\n        sizeMd=\"4\"\r\n        sizeSm=\"6\"\r\n        size=\"12\"\r\n        *ngFor=\"let post of posts; let index = index\"\r\n      >\r\n        <app-post-card\r\n          [post]=\"post\"\r\n          [canDelete]=\"userId === currentUser.id\"\r\n          (delete)=\"delIndex = index\"\r\n          [hideAuthor]=\"!!userId\"\r\n        ></app-post-card>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n  <ion-infinite-scroll (ionInfinite)=\"loadMore()\">\r\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\r\n  </ion-infinite-scroll>\r\n</ion-content>\r\n<ion-fab\r\n  *ngIf=\"!userId || userId === currentUser.id\"\r\n  vertical=\"bottom\"\r\n  horizontal=\"center\"\r\n  slot=\"fixed\"\r\n>\r\n  <ion-fab-button (click)=\"modal.open()\">\r\n    <ion-icon name=\"add\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n<app-post-modal #modal (afterSave)=\"loadMore(0)\"></app-post-modal>\r\n<ion-modal\r\n  [isOpen]=\"delIndex !== undefined\"\r\n  (willDismiss)=\"delIndex = undefined\"\r\n>\r\n  <ng-template>\r\n    <ion-header>\r\n      <ion-toolbar>\r\n        <ion-button slot=\"start\" (click)=\"delete()\">Delete</ion-button>\r\n        <ion-title></ion-title>\r\n        <ion-button slot=\"end\" fill=\"clear\" (click)=\"delIndex = undefined\"\r\n          >Cancel</ion-button\r\n        >\r\n      </ion-toolbar>\r\n    </ion-header>\r\n    <ion-content class=\"ion-padding\">\r\n      Are you realy want to delete this post \"{{ posts[delIndex].text }}\"?\r\n    </ion-content>\r\n  </ng-template>\r\n</ion-modal>\r\n";
 
 /***/ }),
 
@@ -21807,6 +21961,17 @@ module.exports = "<ion-popover trigger=\"current-user\" [dismissOnSelect]=\"true
 
 "use strict";
 module.exports = "<ion-chip [routerLink]=\"link && ['/profile', user.id]\">\r\n  <ion-avatar>\r\n    <img referrerpolicy=\"no-referrer\" [alt]=\"user.name\" [src]=\"user.picture\" />\r\n  </ion-avatar>\r\n  <ion-label>{{ prefix }}{{ user.name }}</ion-label>\r\n</ion-chip>\r\n";
+
+/***/ }),
+
+/***/ 4158:
+/*!********************************************************!*\
+  !*** ./src/app/components/users/users.html?ngResource ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = "<ion-content>\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col  sizeXl=\"2\" sizeLg=\"3\" sizeMd=\"4\" size=\"6\" *ngFor=\"let user of users\">\r\n        <div class=\"user-card\" [routerLink]=\"['/profile',user.id]\">\r\n          <div class=\"img\">\r\n            <img referrerpolicy=\"no-referrer\" [src]=\"imgUrl(user.picture)\" />\r\n          </div>\r\n          <ion-text color=\"primary\">\r\n            <h4><b>{{user.name}}</b></h4>\r\n          </ion-text>\r\n          <ion-text>{{user.email}}</ion-text>\r\n        </div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>\r\n";
 
 /***/ }),
 
