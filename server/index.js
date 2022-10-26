@@ -8,6 +8,7 @@ connect();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use("/static", express.static("static"));
 app.use(require("./middleware/cors"));
 app.use("/private", require("./routes/private"));
 app.use(require("./routes/login"));

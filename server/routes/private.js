@@ -15,6 +15,14 @@ router.get("/user/:id?", async (req, res) => {
   return res.json(user.toObject());
 });
 
+router.get("/types", (req, res) => {
+  return res.json(require("../schemas/Types").Types);
+});
+
+router.get("/regions", (req, res) => {
+  return res.json(require("../schemas/Regions").Regions);
+});
+
 router.use("/post", require("./post"));
 
 module.exports = router;

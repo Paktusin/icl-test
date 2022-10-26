@@ -1,46 +1,26 @@
 <ion-content>
   <ng-content></ng-content>
-  <ion-grid>
+  <ion-grid style="max-width: 1230px">
+    <ion-row *ngIf="!userId">
+      <ion-col>
+        <div>
+          <app-tag *ngFor="let type of $types async"></app-tag>
+        </div>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col
-        sizeXl="3"
-        sizeLg="4"
-        sizeMd="6"
+        sizeMd="4"
+        sizeSm="6"
         size="12"
         *ngFor="let post of posts; let index = index"
       >
-        <ion-card>
-          <div class="post-img" *ngIf="post.img">
-            <img referrerpolicy="no-referrer" [src]="post.img" />
-          </div>
-          <ion-card-header>
-            <ion-card-title>{{ post.title }}</ion-card-title>
-            <ion-card-subtitle>
-              {{ post.createdAt | date: "medium" }}
-            </ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>{{ post.text }}...</ion-card-content>
-          <ion-toolbar>
-            <ion-button [routerLink]="['/posts', post._id]" fill="clear"
-              >Read more</ion-button
-            >
-            <app-user
-            [hideName]="true"
-            [link]="true"
-            slot="end"
-            *ngIf="!userId"
-            [user]="post.from"
-          ></app-user>
-            <ion-button
-              slot="end"
-              fill="clear"
-              (click)="delIndex = index"
-              *ngIf="userId === currentUser.id"
-            >
-              <ion-icon name="trash-outline"></ion-icon>
-            </ion-button>
-          </ion-toolbar>
-        </ion-card>
+        <app-post-card
+          [post]="post"
+          [canDelete]="userId === currentUser.id"
+          (delete)="delIndex = index"
+          [hideAuthor]="!!userId"
+        ></app-post-card>
       </ion-col>
     </ion-row>
   </ion-grid>

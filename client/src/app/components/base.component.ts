@@ -1,11 +1,16 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({ template: '' })
 export class BaseComponent implements OnDestroy {
   static defaultSubName = 'default';
   subs = new Map<string, Subscription[]>();
   loading = false;
+
+  imgUrl(url) {
+    return environment.apiUrl + url;
+  }
 
   ngOnDestroy(): void {
     this.clearAllSubs();

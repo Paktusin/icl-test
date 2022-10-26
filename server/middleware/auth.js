@@ -24,7 +24,7 @@ async function verifyGoogleToken(req, res, next) {
     });
     req.ticket = ticket;
     if (ticket.payload.aud !== audience) {
-      return res.status(401).send("not authenrificated");
+      return res.status(401).send({ message: "wrong token" });
     }
   } catch (err) {
     console.error(err);

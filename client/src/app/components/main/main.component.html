@@ -1,27 +1,21 @@
-<ion-menu content-id="main-content">
-  <ion-content>
-    <ion-list>
-      <ion-menu-toggle auto-hide="false">
-        <ion-item [routerLink]="['/posts']" button>
-          <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
-          <ion-label>Posts</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
 <ion-page class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
+      <img
+        class="logo"
+        slot="start"
+        height="48"
+        width="48"
+        src="/assets/logo.svg"
+      />
+      <app-current-user slot="start" *ngIf="user"></app-current-user>
+      <ion-buttons slot="end">
         <ion-menu-toggle>
           <ion-button>
             <ion-icon slot="icon-only" name="menu"></ion-icon>
           </ion-button>
         </ion-menu-toggle>
       </ion-buttons>
-      <app-current-user slot="end" *ngIf="user"></app-current-user>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -29,3 +23,17 @@
   </ion-content>
 </ion-page>
 <ion-menu-controller></ion-menu-controller>
+<ion-menu content-id="main-content" side="end">
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false">
+        <ion-item [routerLink]="['/posts']" button>
+          <ion-label>Blog</ion-label>
+        </ion-item>
+        <ion-item target="_blank" href="https://paktusin.github.io/" button>
+          <ion-label>Career</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

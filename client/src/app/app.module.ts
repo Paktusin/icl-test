@@ -18,6 +18,8 @@ import { PostComponent } from './components/post/post.component';
 import { UserComponent } from './components/user/user.component';
 import { CurrentUserComponent } from './components/user/current-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PostCardComponent } from './components/post-card/post-card';
+import { TagComponent } from './components/tag/tag';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     UserComponent,
     CurrentUserComponent,
     ProfileComponent,
+    PostCardComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,

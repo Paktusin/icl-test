@@ -6,6 +6,8 @@ export interface Post {
   title: string;
   img: string;
   text: string;
+  type: string;
+  region: string;
   from: User;
   createdAt: number;
   likes: number;

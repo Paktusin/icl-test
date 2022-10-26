@@ -19,6 +19,26 @@
         ></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label position="stacked">Region</ion-label>
+        <ion-select required formControlName="region">
+          <ion-select-option
+            *ngFor="let region of $regions | async"
+            [value]="region"
+            >{{ region }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Type</ion-label>
+        <ion-select required formControlName="type">
+          <ion-select-option
+            *ngFor="let type of $types | async"
+            [value]="type"
+            >{{ type }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
         <ion-label position="stacked">Text of the post</ion-label>
         <ion-textarea
           required
