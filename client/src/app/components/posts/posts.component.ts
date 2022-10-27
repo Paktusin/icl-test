@@ -51,11 +51,8 @@ export class PostsComponent extends BaseComponent implements OnInit {
     this.loading = true;
     this.addSub(
       this.postsService
-        .list({ ...this.filter, page, userId: this.userId })
+        .listParams({ ...this.filter, page, userId: this.userId })
         .subscribe((posts) => {
-          if (posts.length) {
-            this.page = page;
-          }
           if (page === 0) {
             this.posts = posts;
           } else {

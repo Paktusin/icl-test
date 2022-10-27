@@ -21,13 +21,11 @@ import { map, switchMap, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PostsService extends FireService<Post> {
-  lastMap = {};
-
   constructor(protected fireStore: Firestore, private storage: Storage) {
     super('posts', fireStore);
   }
 
-  list(params: any): Observable<Post[]> {
+  listParams(params: any): Observable<Post[]> {
     const page = params.page || 0;
     const cond = [orderBy('createdAt', 'desc'), limit(10)];
     if (params.type) {
@@ -37,19 +35,9 @@ export class PostsService extends FireService<Post> {
       cond.push(where('region', '==', params.region));
     }
     if (params.userId) {
-      cond.push(where('user.id', '==', params.userId));
+      cond.push(where('from.id', '==', params.userId));
     }
-    if (page && this.lastMap[page]) {
-      cond.push(startAfter('createdAt', this.lastMap[page]));
-    }
-    return super.list(...cond).pipe(
-      tap((res) => {
-        const last = res.slice(-1)[0]?.createdAt;
-        if (last) {
-          this.lastMap[page + 1] = last;
-        }
-      })
-    );
+    return super.listPage('createdAt', page, 10, ...cond);
   }
 
   uploadImage(path: string, base64: string) {
