@@ -3,8 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { Post as Post } from 'src/app/interfaces/Post';
-import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.servie';
+import { UserService } from 'src/app/services/user.service';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -28,7 +28,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
   constructor(
     private postsService: PostsService,
     private activeRoute: ActivatedRoute,
-    private loginService: LoginService
+    private userService: UserService
   ) {
     super();
     this.activeRoute.data.subscribe((data) => {
@@ -37,7 +37,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
   }
 
   get currentUser() {
-    return this.currentUser;
+    return this.userService.currentUser;
   }
 
   ngOnInit(): void {
@@ -48,18 +48,22 @@ export class PostsComponent extends BaseComponent implements OnInit {
   }
 
   loadMore(page = this.page + 1) {
+    this.loading = true;
     this.addSub(
-      this.postsService.list().subscribe((messages) => {
-        if (messages.length) {
-          this.page = page;
-        }
-        if (page === 0) {
-          this.posts = messages;
-        } else {
-          this.posts = this.posts.concat(messages);
-        }
-        this.infinityScroll.complete();
-      })
+      this.postsService
+        .list({ ...this.filter, page, userId: this.userId })
+        .subscribe((posts) => {
+          if (posts.length) {
+            this.page = page;
+          }
+          if (page === 0) {
+            this.posts = posts;
+          } else {
+            this.posts = this.posts.concat(posts);
+          }
+          this.infinityScroll.complete();
+          this.loading = false;
+        })
     );
   }
 

@@ -8,7 +8,6 @@ import {
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
 import { Resources } from 'src/app/interfaces/Resources';
-import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.servie';
 import { UserService } from 'src/app/services/user.service';
 import { BaseComponent } from '../base.component';
@@ -55,7 +54,11 @@ export class PostModalComponent extends BaseComponent {
     this.loading = true;
     this.addSub(
       this.postsService
-        .save({ ...this.form.value, from: this.userService.currentUser })
+        .save({
+          ...this.form.value,
+          from: this.userService.currentUser,
+          createdAt: new Date().valueOf(),
+        })
         .subscribe(() => {
           this.visible = false;
           this.loading = false;
