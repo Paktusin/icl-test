@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Component({ template: '' })
 export class BaseComponent implements OnDestroy {
@@ -9,9 +8,6 @@ export class BaseComponent implements OnDestroy {
   loading = false;
 
   imgUrl(url) {
-    if (!url.indexOf('/static')) {
-      return environment.apiUrl + url;
-    }
     return url;
   }
 

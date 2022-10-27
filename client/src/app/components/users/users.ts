@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/User';
-import { LoginService } from 'src/app/services/login.service';
+import { UserService } from 'src/app/services/user.service';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -10,13 +10,13 @@ import { BaseComponent } from '../base.component';
 export class UsersComponent extends BaseComponent implements OnInit {
   users: User[] = [];
 
-  constructor(private loginService: LoginService) {
+  constructor(private userService: UserService) {
     super();
   }
 
   ngOnInit(): void {
     this.addSub(
-      this.loginService.list().subscribe((users) => (this.users = users))
+      this.userService.list().subscribe((users) => (this.users = users))
     );
   }
 }

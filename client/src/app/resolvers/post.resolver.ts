@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Post } from '../interfaces/Post';
-import { PostsService } from './posts.servie';
+import { PostsService } from '../services/posts.servie';
 
 @Injectable()
 export class PostResolver implements Resolve<Post> {

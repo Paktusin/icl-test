@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { Auth } from '@angular/fire/auth';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -7,11 +7,11 @@ import { BaseComponent } from '../base.component';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent extends BaseComponent {
-  constructor(private loginService: LoginService) {
+  constructor(private auth: Auth) {
     super();
   }
 
   get user() {
-    return this.loginService.user;
+    return this.auth.currentUser;
   }
 }

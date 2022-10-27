@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -38,7 +37,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
   }
 
   get currentUser() {
-    return this.loginService.user;
+    return this.currentUser;
   }
 
   ngOnInit(): void {
@@ -50,30 +49,23 @@ export class PostsComponent extends BaseComponent implements OnInit {
 
   loadMore(page = this.page + 1) {
     this.addSub(
-      this.postsService
-        .list({
-          skip: this.page * 10,
-          limit: 10,
-          userId: this.userId,
-          ...this.filter,
-        })
-        .subscribe((messages) => {
-          if (messages.length) {
-            this.page = page;
-          }
-          if (page === 0) {
-            this.posts = messages;
-          } else {
-            this.posts = this.posts.concat(messages);
-          }
-          this.infinityScroll.complete();
-        })
+      this.postsService.list().subscribe((messages) => {
+        if (messages.length) {
+          this.page = page;
+        }
+        if (page === 0) {
+          this.posts = messages;
+        } else {
+          this.posts = this.posts.concat(messages);
+        }
+        this.infinityScroll.complete();
+      })
     );
   }
 
   delete() {
     this.addSub(
-      this.postsService.delete(this.posts[this.delIndex]).subscribe(() => {
+      this.postsService.delete(this.posts[this.delIndex].id).subscribe(() => {
         this.posts.splice(this.delIndex, 1);
         this.delIndex = undefined;
       })

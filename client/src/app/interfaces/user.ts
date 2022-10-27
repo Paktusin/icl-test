@@ -1,7 +1,7 @@
-import { User as GoogleUser } from '@codetrix-studio/capacitor-google-auth';
+import { Doc } from './Doc';
 
-export interface User
-  extends Omit<GoogleUser, 'authentication' | 'serverAuthCode' | 'imageUrl'> {
-  token?: string;
-  picture?: string;
+export interface User extends Doc {
+  name: string;
+  email: string;
+  img: string;
 }

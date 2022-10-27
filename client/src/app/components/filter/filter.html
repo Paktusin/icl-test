@@ -13,7 +13,7 @@
       [routerLink]="['/posts']"
       queryParamsHandling="merge"
       [queryParams]="{type:type}"
-      *ngFor="let type of $types | async"
+      *ngFor="let type of types"
       >{{type}}</app-tag
     >
   </div>
@@ -31,7 +31,7 @@
       [routerLink]="['/posts']"
       queryParamsHandling="merge"
       [queryParams]="{region:region}"
-      *ngFor="let region of $regions | async"
+      *ngFor="let region of regions"
       >{{region}}</app-tag
     >
   </div>

@@ -1,8 +1,7 @@
-import { Comment } from './Comment';
+import { Doc } from './Doc';
 import { User } from './User';
 
-export interface Post {
-  _id: string;
+export interface Post extends Doc {
   title: string;
   img: string;
   text: string;
@@ -10,5 +9,4 @@ export interface Post {
   region: string;
   from: User;
   createdAt: number;
-  likes: number;
 }

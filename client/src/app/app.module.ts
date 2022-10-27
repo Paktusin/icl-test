@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SessionInterceptor } from './interceptors/session.interceptor';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { PostModalComponent } from './components/post-modal/post-modal.component';
 import { PostsComponent } from './components/posts/posts.component';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
-import { UserComponent } from './components/user/user.component';
-import { CurrentUserComponent } from './components/user/current-user.component';
+import { CurrentUserComponent } from './components/current-user/current-user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PostCardComponent } from './components/post-card/post-card';
 import { TagComponent } from './components/tag/tag';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs/breadcrumbs';
-import { UsersComponent } from './components/users/users';
 import { FilterComponent } from './components/filter/filter';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
+import { UsersComponent } from './components/users/users';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,13 @@ import { FilterComponent } from './components/filter/filter';
     PostsComponent,
     PostModalComponent,
     PostComponent,
-    UserComponent,
     CurrentUserComponent,
     ProfileComponent,
     PostCardComponent,
     TagComponent,
     BreadcrumbsComponent,
-    UsersComponent,
     FilterComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,15 +49,12 @@ import { FilterComponent } from './components/filter/filter';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: SessionInterceptor,
-      multi: true,
-    },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

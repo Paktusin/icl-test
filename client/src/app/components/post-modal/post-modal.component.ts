@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
-import { Observable } from 'rxjs';
+import { Resources } from 'src/app/interfaces/Resources';
 import { LoginService } from 'src/app/services/login.service';
 import { PostsService } from 'src/app/services/posts.servie';
-import { ResourceService } from 'src/app/services/resource.service';
+import { UserService } from 'src/app/services/user.service';
 import { BaseComponent } from '../base.component';
 
 @Component({
@@ -25,14 +25,13 @@ export class PostModalComponent extends BaseComponent {
   @ViewChild(IonModal) modal: IonModal;
 
   form: FormGroup;
-  $regions: Observable<string[]>;
-  $types: Observable<string[]>;
+  regions = Resources.regions;
+  types = Resources.types;
 
   constructor(
     private formBuilder: FormBuilder,
     private postsService: PostsService,
-    private loginService: LoginService,
-    private resourceService: ResourceService
+    private userService: UserService
   ) {
     super();
     this.form = this.formBuilder.group({
@@ -42,8 +41,6 @@ export class PostModalComponent extends BaseComponent {
       region: [],
       type: [],
     });
-    this.$regions = this.resourceService.getRegions();
-    this.$types = this.resourceService.getTypes();
   }
 
   open() {
@@ -58,11 +55,11 @@ export class PostModalComponent extends BaseComponent {
     this.loading = true;
     this.addSub(
       this.postsService
-        .create({ ...this.form.value, from: this.loginService.user })
+        .save({ ...this.form.value, from: this.userService.currentUser })
         .subscribe(() => {
           this.visible = false;
           this.loading = false;
-          // this.form.reset();
+          this.form.reset();
           this.afterSave.emit();
         })
     );

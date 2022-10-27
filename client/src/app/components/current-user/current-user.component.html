@@ -10,4 +10,9 @@
     </ion-content>
   </ng-template>
 </ion-popover>
-<app-user id="current-user" [user]="user"></app-user>
+<ion-chip id="current-user">
+  <ion-avatar>
+    <img referrerpolicy="no-referrer" [alt]="user.name" [src]="user.img" />
+  </ion-avatar>
+  <ion-label>{{ user.name }}</ion-label>
+</ion-chip>
