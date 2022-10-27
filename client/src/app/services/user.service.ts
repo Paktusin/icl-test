@@ -15,11 +15,13 @@ export class UserService extends FireService<User> {
   }
 
   static authUserToUser(authUser: AuthUser): User {
-    return {
-      id: authUser.uid,
-      name: authUser.displayName,
-      email: authUser.email,
-      img: authUser.photoURL,
-    };
+    return (
+      authUser && {
+        id: authUser.uid,
+        name: authUser.displayName,
+        email: authUser.email,
+        img: authUser.photoURL,
+      }
+    );
   }
 }

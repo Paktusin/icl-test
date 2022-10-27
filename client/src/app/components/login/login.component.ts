@@ -10,9 +10,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent extends BaseComponent implements OnInit {
-  userService: any;
-
   constructor(
+    private userService: UserService,
     private loginService: LoginService,
     private router: Router,
     private auth: Auth
