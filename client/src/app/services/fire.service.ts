@@ -18,11 +18,11 @@ import { map } from 'rxjs/operators';
 export class FireService<T extends Doc> {
   private ref: CollectionReference<T>;
 
-  constructor(path, protected store: Firestore) {
+  constructor(path, protected fireStore: Firestore) {
     if (!path) {
       throw new Error('path didn set');
     }
-    this.ref = collection(this.store, path) as CollectionReference<T>;
+    this.ref = collection(this.fireStore, path) as CollectionReference<T>;
   }
 
   static newId(): string {

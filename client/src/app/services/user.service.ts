@@ -10,8 +10,8 @@ import { FireService } from './fire.service';
 export class UserService extends FireService<User> {
   currentUser = UserService.authUserToUser(this.auth.currentUser);
 
-  constructor(protected store: Firestore, private auth: Auth) {
-    super('users', store);
+  constructor(protected fireStore: Firestore, private auth: Auth) {
+    super('users', fireStore);
   }
 
   static authUserToUser(authUser: AuthUser): User {

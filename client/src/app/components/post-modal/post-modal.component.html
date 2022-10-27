@@ -1,13 +1,19 @@
-<ion-modal #modal [isOpen]="visible" (willDismiss)="visible = false">
+<ion-modal #modal [isOpen]="visible" (willDismiss)="visible = false; clear()">
   <ng-template>
     <ion-content class="ion-padding" [formGroup]="form">
       <ion-item>
-        <ion-label position="stacked">Image of the post</ion-label>
-        <ion-input
-          formControlName="img"
-          type="text"
-          placeholder="Enter img url"
-        ></ion-input>
+        <div class="file-input" accept="image/jpeg">
+          <ion-button class="ion-margin-end" (click)="file.click()"
+            >{{ !fileName ? "Upload" : "Change" }} image</ion-button
+          >
+          {{ fileName }}
+        </div>
+        <input
+          #file
+          (change)="onFileChange($event)"
+          type="file"
+          style="display: none"
+        />
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Title of the post</ion-label>
