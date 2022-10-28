@@ -4,6 +4,7 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { Post } from '../interfaces/Post';
 import { PostsService } from '../services/posts.servie';
 
@@ -12,6 +13,8 @@ export class PostResolver implements Resolve<Post> {
   constructor(private postService: PostsService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.postService.get(route.paramMap.get('id'));
+    return this.postService
+      .get(route.paramMap.get('id'))
+      .pipe(map((doc) => doc.data()));
   }
 }

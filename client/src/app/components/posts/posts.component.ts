@@ -1,7 +1,14 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  limit,
+  orderBy,
+  QueryDocumentSnapshot,
+  where,
+} from '@angular/fire/firestore';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { startAfter } from 'firebase/firestore';
 import { Post as Post } from 'src/app/interfaces/Post';
 import { PostsService } from 'src/app/services/posts.servie';
 import { UserService } from 'src/app/services/user.service';
@@ -19,7 +26,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
 
   text = '';
   page = 0;
-  posts: Post[] = [];
+  posts: QueryDocumentSnapshot<Post>[] = [];
   form: FormGroup;
   modalVisible = false;
   delIndex?: number;
@@ -49,24 +56,36 @@ export class PostsComponent extends BaseComponent implements OnInit {
 
   loadMore(page = this.page + 1) {
     this.loading = true;
+    const { type, region } = this.filter;
+    const cond = [orderBy('createdAt', 'desc'), limit(10)];
+    if (type) {
+      cond.push(where('type', '==', type));
+    }
+    if (region) {
+      cond.push(where('region', '==', region));
+    }
+    if (this.userId) {
+      cond.push(where('from.id', '==', this.userId));
+    }
+    if (page > 0 && this.posts.length) {
+      cond.push(startAfter(this.posts[this.posts.length - 1]));
+    }
     this.addSub(
-      this.postsService
-        .listParams({ ...this.filter, page, userId: this.userId })
-        .subscribe((posts) => {
-          if (page === 0) {
-            this.posts = posts;
-          } else {
-            this.posts = this.posts.concat(posts);
-          }
-          this.infinityScroll.complete();
-          this.loading = false;
-        })
+      this.postsService.list().subscribe((query) => {
+        if (page === 0) {
+          this.posts = query.docs;
+        } else {
+          this.posts = this.posts.concat(query.docs);
+        }
+        this.infinityScroll.complete();
+        this.loading = false;
+      })
     );
   }
 
   delete() {
     this.addSub(
-      this.postsService.delete(this.posts[this.delIndex].id).subscribe(() => {
+      this.postsService.delete(this.posts[this.delIndex]).subscribe(() => {
         this.posts.splice(this.delIndex, 1);
         this.delIndex = undefined;
       })

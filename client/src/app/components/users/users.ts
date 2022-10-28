@@ -16,7 +16,9 @@ export class UsersComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.addSub(
-      this.userService.list().subscribe((users) => (this.users = users))
+      this.userService
+        .list()
+        .subscribe((users) => (this.users = users.docs.map((d) => d.data())))
     );
   }
 }
