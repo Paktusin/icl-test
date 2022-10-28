@@ -57,7 +57,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
   loadMore(page = this.page + 1) {
     this.loading = true;
     const { type, region } = this.filter;
-    const cond = [orderBy('createdAt', 'desc'),limit(10)];
+    const cond = [orderBy('createdAt', 'desc'), limit(6)];
     if (type) {
       cond.push(where('type', '==', type));
     }
