@@ -13,8 +13,6 @@ export class PostResolver implements Resolve<Post> {
   constructor(private postService: PostsService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.postService
-      .get(route.paramMap.get('id'))
-      .pipe(map((doc) => doc.data()));
+    return this.postService.getDocWithText(route.paramMap.get('id'));
   }
 }

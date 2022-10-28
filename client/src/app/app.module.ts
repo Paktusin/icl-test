@@ -20,7 +20,10 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs/bread
 import { FilterComponent } from './components/filter/filter';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import {
+  provideFirestore,
+  getFirestore,
+} from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { UsersComponent } from './components/users/users';

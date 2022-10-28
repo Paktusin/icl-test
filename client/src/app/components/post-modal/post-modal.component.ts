@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
+import { off } from 'process';
+import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Resources } from 'src/app/interfaces/Resources';
 import { FireService } from 'src/app/services/fire.service';
@@ -31,6 +33,7 @@ export class PostModalComponent extends BaseComponent {
   types = Resources.types;
   fileBase64?: string;
   fileName?: string;
+  inputImgUrl = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -79,8 +82,13 @@ export class PostModalComponent extends BaseComponent {
     }
     this.loading = true;
     this.addSub(
-      this.postsService
-        .uploadImage(`post/${id}/${this.fileName}`, this.fileBase64)
+      (this.inputImgUrl
+        ? of(this.form.value.img)
+        : this.postsService.uploadImage(
+            `post/${id}/${this.fileName}`,
+            this.fileBase64
+          )
+      )
         .pipe(
           switchMap((downloadUrl) =>
             this.postsService.save({

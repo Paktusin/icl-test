@@ -4,6 +4,7 @@ import {
   doc,
   Firestore,
   getDocs,
+  query,
   setDoc,
 } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
@@ -31,6 +32,21 @@ export class PostsService extends FireService<Post> {
     const storageRef = ref(this.storage, path);
     return from(uploadString(storageRef, base64, 'data_url')).pipe(
       switchMap(() => from(getDownloadURL(storageRef)))
+    );
+  }
+
+  getDocWithText(id: string): Observable<Post> {
+    return super.get(id).pipe(
+      switchMap((postDoc) =>
+        from(
+          getDocs(query(collection(this.fireStore, `${postDoc.ref.path}/text`)))
+        ).pipe(
+          map((texts) => ({
+            ...postDoc.data(),
+            text: texts.docs[0].data().text,
+          }))
+        )
+      )
     );
   }
 

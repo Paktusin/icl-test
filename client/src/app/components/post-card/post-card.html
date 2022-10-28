@@ -1,6 +1,6 @@
 <ion-card class="card">
   <div class="post-img" *ngIf="post.img">
-    <img class="img" referrerpolicy="no-referrer" [src]="imgUrl(post.img)" />
+    <img class="img" referrerpolicy="no-referrer" [src]="post.img" />
     <div class="tags">
       <app-tag class="primary first">{{post.region}}</app-tag>
       <app-tag class="white">{{post.type}}</app-tag>

@@ -7,10 +7,6 @@ export class BaseComponent implements OnDestroy {
   subs = new Map<string, Subscription[]>();
   loading = false;
 
-  imgUrl(url) {
-    return url;
-  }
-
   ngOnDestroy(): void {
     this.clearAllSubs();
   }

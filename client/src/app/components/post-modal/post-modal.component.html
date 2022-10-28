@@ -2,18 +2,27 @@
   <ng-template>
     <ion-content class="ion-padding" [formGroup]="form">
       <ion-item>
-        <div class="file-input" accept="image/jpeg">
+        <div *ngIf="!inputImgUrl" class="file-input" accept="image/jpeg">
           <ion-button class="ion-margin-end" (click)="file.click()"
-            >{{ !fileName ? "Upload" : "Change" }} image</ion-button
-          >
+            ><ion-icon name="cloud-upload-outline"></ion-icon
+          ></ion-button>
           {{ fileName }}
+          <input
+            #file
+            (change)="onFileChange($event)"
+            type="file"
+            style="display: none"
+          />
         </div>
-        <input
-          #file
-          (change)="onFileChange($event)"
-          type="file"
-          style="display: none"
-        />
+        <ion-input
+          *ngIf="inputImgUrl"
+          formControlName="img"
+          type="text"
+          placeholder="Enter img url"
+        ></ion-input>
+        <ion-button slot="end" (click)="inputImgUrl = !inputImgUrl">{{
+          inputImgUrl ? "Upload image" : "Enter image url"
+        }}</ion-button>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Title of the post</ion-label>
