@@ -57,7 +57,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
   loadMore(page = this.page + 1) {
     this.loading = true;
     const { type, region } = this.filter;
-    const cond = [orderBy('createdAt', 'desc'), limit(10)];
+    const cond = [orderBy('createdAt', 'desc'),limit(10)];
     if (type) {
       cond.push(where('type', '==', type));
     }
@@ -71,7 +71,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
       cond.push(startAfter(this.posts[this.posts.length - 1]));
     }
     this.addSub(
-      this.postsService.list().subscribe((query) => {
+      this.postsService.list(...cond).subscribe((query) => {
         if (page === 0) {
           this.posts = query.docs;
         } else {
