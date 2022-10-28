@@ -52,15 +52,13 @@ export class PostsComponent extends BaseComponent implements OnInit {
     this.addSub(
       this.postsService
         .list({
-          skip: this.page * 10,
+          skip: page * 10,
           limit: 10,
           userId: this.userId,
           ...this.filter,
         })
         .subscribe((messages) => {
-          if (messages.length) {
-            this.page = page;
-          }
+          this.page = page;
           if (page === 0) {
             this.posts = messages;
           } else {
