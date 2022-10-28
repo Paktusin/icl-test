@@ -1,5 +1,9 @@
 <ion-content>
-  <ion-progress-bar class="progress" type="indeterminate" *ngIf="loading"></ion-progress-bar>
+  <ion-progress-bar
+    class="progress"
+    type="indeterminate"
+    *ngIf="loading"
+  ></ion-progress-bar>
   <ng-content></ng-content>
   <ion-grid style="max-width: 1230px">
     <ion-row *ngIf="!userId">
@@ -53,7 +57,9 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      Are you realy want to delete this post "{{ posts[delIndex].text }}"?
+      Are you realy want to delete this post "{{
+        posts[delIndex].data().text
+      }}"?
     </ion-content>
   </ng-template>
 </ion-modal>
